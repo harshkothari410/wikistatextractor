@@ -1,23 +1,5 @@
-import urllib2
-
-def get_source(page):
-	url=urllib2.urlopen(page)
-    #print url
-	source=url.read()
-	return source
-
-def getSummaryPages(langdata):
-	getSummaryPageslist = []
-	for x in langdata:
-		getSummaryPageslist.append('http://stats.wikimedia.org/EN/Summary' + x + '.htm')
-	return getSummaryPageslist
-
-
-def getTablePages(langdata):
-	getTablesPageslist = []
-	for x in langdata:
-		getTablesPageslist.append('http://stats.wikimedia.org/EN/TablesWikipedia' + x + '.htm')
-	return getTablesPageslist
+from getSource import *
+from getPages import *
 
 def visitSummaryPage(summaryPageList):
 	summaryDetail = ['Article Count','New Articles per Day','Edits per Month']
@@ -67,7 +49,6 @@ def extractSummaryData(data,summaryDetail):
 	articleCountData = articleCountData[articleCount + len('<td class=r>') : ]
 	#print articleCountData
 	articleCount1  = articleCountData[:articleCountData.find('</td>')]
-
 
 	newArticle = data.find(summaryDetail[1])
 	newArticleData = data[newArticle:]
