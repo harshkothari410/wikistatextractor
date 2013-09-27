@@ -9,4 +9,4 @@ def getTablePages(langdata):
 	getTablesPageslist = []
 	for x in langdata:
 		getTablesPageslist.append('http://stats.wikimedia.org/EN/TablesWikipedia' + x + '.htm')
-	return getTablesPageslist
+	return getTablesPageslist 
